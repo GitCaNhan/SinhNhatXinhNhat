@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initRainEffect('assets/mua_1_nobg.png', 'assets/mua_3_nobg.png');
     }
 
-    const INTRO_TEXT = "hello người đẹp, hôm nay là ngày gì vậy nhỉiii ?";
+    const INTRO_TEXT = "Hello người đẹp, hôm nay là ngày gì vậy nhỉiii ?";
     let isRunning = false;
 
     // Tạo các hạt sao lấp lánh cho hào quang bảo bối

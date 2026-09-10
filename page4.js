@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         await delay(600);
 
         // 3. Chạy chữ gõ máy kèm âm thanh bàn phím:
-        // "quá nhiều điều tui muốn nói, nhưng chắc em hiểu mình mà"
-        await typeText(bottomText, bottomCursor, "quá nhiều điều tui muốn nói, nhưng chắc em hiểu mình mà 💖", 65);
+        // "Quá nhiều điều tui muốn nói, nhưng chắc em hiểu mình mà"
+        await typeText(bottomText, bottomCursor, "Quá nhiều điều tui muốn nói, nhưng chắc em hiểu mình mà 💖", 65);
 
         // 4. Xuất hiện nút "Tiếp theo ➔"
         await delay(800);

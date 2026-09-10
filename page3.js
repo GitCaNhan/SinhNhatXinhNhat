@@ -134,23 +134,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // "là ngày một em bé cute nhất thế giới chào đời"
         // ----------------------------------------------------
         await setCharacter('assets/processed/doremon_em_be.png', 'anim-baby');
-        await typeText("là ngày một em bé cute nhất thế giới chào đời", 65);
+        await typeText("Là ngày một em bé cute nhất thế giới chào đời", 65);
         await delay(3500);
 
         // ----------------------------------------------------
         // LỜI CHÚC 2: Doraemon xúc động khóc
-        // "được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui "
+        // "Được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui "
         // ----------------------------------------------------
         await setCharacter('assets/processed/doremon_khoc.png', 'anim-crying');
-        await typeText("được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui", 65);
+        await typeText("Được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui", 65);
         await delay(3500);
 
         // ----------------------------------------------------
         // LỜI CHÚC 3: Doraemon hạnh phúc
-        // "sinh nhật tuổi 23, chúc em luôn xinh đẹp, vui tươi, hạnh phúc... mong mọi điều tốt đẹp nhất luôn đến với em"
+        // "Sinh nhật tuổi 23, chúc em luôn xinh đẹp, vui tươi, hạnh phúc... mong mọi điều tốt đẹp nhất luôn đến với em"
         // ----------------------------------------------------
         await setCharacter('assets/processed/doremon_hanh_phuc.png', 'anim-happy');
-        await typeText("sinh nhật tuổi 23, chúc em luôn xinh đẹp, vui tươi, hạnh phúc... mong mọi điều tốt đẹp nhất luôn đến với em ✨", 60);
+        await typeText("Sinh nhật tuổi 23, chúc em luôn xinh đẹp, vui tươi, hạnh phúc... mong mọi điều tốt đẹp nhất luôn đến với em ✨", 60);
 
         // Bắn pháo hoa cao trào kết thúc
         await delay(800);
