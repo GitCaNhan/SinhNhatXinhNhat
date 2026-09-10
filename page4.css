@@ -1365,7 +1365,7 @@ body {
 /* ==================== KHUNG DORAEMON LÀM NŨNG & LỜI THOẠI PHÍA DƯỚI HOA ==================== */
 .flower-bottom-section {
     position: fixed;
-    bottom: 20px;
+    bottom: calc(22px + env(safe-area-inset-bottom, 16px));
     left: 50%;
     transform: translateX(-50%) translateY(30px);
     z-index: 250;
@@ -1523,7 +1523,7 @@ body {
 @media (max-width: 600px) {
     .flowers {
         left: 50%;
-        bottom: 24vh;
+        bottom: calc(26vh + env(safe-area-inset-bottom, 15px));
         top: auto;
         transform: translateX(-50%) scale(0.88);
         transform-origin: bottom center;

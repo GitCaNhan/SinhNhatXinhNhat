@@ -13,7 +13,7 @@ html, body {
     position: relative;
     user-select: none;
     background-color: #ffffff;
-    font-family: 'Comic Neue', cursive, sans-serif;
+    font-family: 'Mali', 'Nunito', cursive, sans-serif;
 }
 
 .container {
@@ -90,12 +90,12 @@ input[type="text"] {
     width: 85%;
     max-width: 320px;
     padding: 12px 16px;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     border: 3px solid #000;
     border-radius: 12px;
     text-align: center;
-    font-family: 'Comic Neue', cursive;
-    font-weight: bold;
+    font-family: 'Mali', 'Nunito', cursive, sans-serif;
+    font-weight: 700;
     outline: none;
     background: #fff;
     transition: box-shadow 0.2s;
@@ -107,13 +107,13 @@ input[type="text"]:focus {
 
 button#submitBtn {
     padding: 10px 32px;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     background-color: #fff;
     border: 3px solid #000;
     border-radius: 12px;
     cursor: pointer;
-    font-family: 'Comic Neue', cursive;
-    font-weight: bold;
+    font-family: 'Mali', 'Nunito', cursive, sans-serif;
+    font-weight: 700;
     box-shadow: 3px 3px 0px #000;
     transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
 }
@@ -172,6 +172,12 @@ button#submitBtn:active {
     z-index: 15;
 }
 
+.top-right {
+    top: 4%;
+    right: 3%;
+    z-index: 15;
+}
+
 .bottom-left {
     bottom: 2%;
     left: 4%;
@@ -212,19 +218,19 @@ button#submitBtn:active {
     100% { transform: rotate(3deg); }
 }
 
-/* Layout của Hint 1: nằm ngang */
+/* Layout của Hint 1: nằm ngang ở góc trên bên trái */
 .hint1-box {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* Layout của Hint 2: XẾP DỌC để bong bóng nằm TRÊN ĐẦU, không chạm vào box câu hỏi */
+/* Layout của Hint 2: nằm ngang ở góc trên bên phải */
 .hint2-box {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
+    flex-direction: row-reverse;
+    gap: 12px;
 }
 
 /* Container animation khi xuất hiện */
@@ -303,6 +309,28 @@ button#submitBtn:active {
     border-width: 11px 7px 0 7px;
     border-style: solid;
     border-color: #fff transparent transparent transparent;
+}
+
+/* Đuôi bóng chỉ sang phải (Dành cho Hint 2 ở góc trên bên phải) */
+.speech-bubble.tail-right::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -14px;
+    transform: translateY(-50%);
+    border-width: 9px 0 9px 14px;
+    border-style: solid;
+    border-color: transparent transparent transparent #000;
+}
+.speech-bubble.tail-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    border-width: 7px 0 7px 11px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
 }
 
 .hidden {
@@ -411,18 +439,19 @@ button#submitBtn:active {
 
     .center-area {
         width: 88%;
-        top: 46%;
+        top: 38%; /* Nâng cao lên để không bị che khi bàn phím ảo iPhone xuất hiện */
     }
     
     .question-box {
-        padding: 24px 16px 18px;
+        padding: 22px 16px 16px;
         border-width: 4px;
         border-radius: 20px;
     }
 
     .question-box h1 {
-        font-size: 1.8rem;
+        font-size: 1.65rem;
         margin-bottom: 12px;
+        font-family: 'Mali', 'Nunito', cursive, sans-serif;
     }
 
     input[type="text"] {
@@ -430,41 +459,44 @@ button#submitBtn:active {
         font-size: 1.2rem;
         padding: 10px;
         border-width: 2.5px;
+        font-family: 'Mali', 'Nunito', cursive, sans-serif;
     }
 
     button#submitBtn {
         font-size: 1.2rem;
         padding: 8px 26px;
         border-width: 2.5px;
+        font-family: 'Mali', 'Nunito', cursive, sans-serif;
     }
 
     /* Thu nhỏ tỷ lệ Doraemon nằm vừa khít hộp trên mobile */
     .doraemon-top {
-        top: -72px;
-        right: 10px;
-        width: 145px;
+        top: -70px;
+        right: 8px;
+        width: 140px;
     }
 
-    /* Kích thước các nhân vật cho mobile (đã zoom to hơn) */
+    /* Kích thước các nhân vật cho mobile */
     .avatar-hint1 {
-        width: 115px;
+        width: 105px;
     }
 
     .avatar-hint2 {
-        width: 115px;
+        width: 105px;
     }
 
     .avatar-bottom {
-        width: 165px;
+        width: 155px;
     }
 
     /* Bong bóng thoại trên mobile */
     .speech-bubble {
         padding: 8px 12px;
         font-size: 0.95rem;
-        max-width: 125px;
+        max-width: 130px;
         border-width: 2px;
         border-radius: 14px;
+        font-family: 'Mali', 'Nunito', cursive, sans-serif;
     }
 
     .speech-bubble.tail-left::before {
@@ -476,6 +508,15 @@ button#submitBtn:active {
         left: -8px;
     }
 
+    .speech-bubble.tail-right::before {
+        border-width: 7px 0 7px 11px;
+        right: -11px;
+    }
+    .speech-bubble.tail-right::after {
+        border-width: 5px 0 5px 8px;
+        right: -8px;
+    }
+
     .speech-bubble.tail-bottom::before {
         border-width: 11px 7px 0 7px;
         bottom: -11px;
@@ -485,10 +526,15 @@ button#submitBtn:active {
         bottom: -8px;
     }
 
-    /* Căn lề các góc cho màn hình dọc (tối ưu khi nhân vật to hơn) */
+    /* Căn lề các góc cho màn hình dọc */
     .top-left {
         top: 2%;
         left: 2%;
+    }
+
+    .top-right {
+        top: 2%;
+        right: 2%;
     }
 
     .bottom-left {

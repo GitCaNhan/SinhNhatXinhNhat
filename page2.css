@@ -382,7 +382,7 @@ html, body {
 /* ==================== BANNER LỜI CHÚC KẾT THÚC ==================== */
 .final-banner {
     position: fixed;
-    bottom: 25px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 15px));
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -391,7 +391,7 @@ html, body {
     border: 4px solid #ff4d94;
     box-shadow: 0 12px 28px rgba(255, 77, 148, 0.25), 6px 6px 0px #000;
     border-radius: 24px;
-    padding: 16px 20px;
+    padding: 14px 18px;
     text-align: center;
     z-index: 1100;
     animation: bannerSlideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -505,8 +505,8 @@ html, body {
     }
 
     .photo-card.center-stage {
-        transform: translate(-50%, -55%) scale(1.4) !important;
-        width: 240px;
+        transform: translate(-50%, -60%) scale(1.35) !important;
+        width: 235px;
     }
 
     .photo-card.center-stage .treasure-aura {

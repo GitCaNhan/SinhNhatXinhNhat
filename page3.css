@@ -384,38 +384,64 @@ html, body {
     box-shadow: 1px 1px 0px #000;
 }
 
-/* ==================== RESPONSIVE ==================== */
+/* ==================== RESPONSIVE CHO ĐIỆN THOẠI (IPHONE 16 PLUS / MOBILE) ==================== */
 @media (max-width: 600px) {
     .page3-container {
-        padding: 12px 10px 30px;
+        padding: 8px 12px calc(18px + env(safe-area-inset-bottom, 12px));
+        min-height: 100dvh;
+        justify-content: center;
     }
 
     .cake-section.compact {
-        transform: scale(0.62);
-        margin-top: -45px;
-        margin-bottom: -55px;
+        transform: scale(0.55);
+        margin-top: -65px;
+        margin-bottom: -65px;
+    }
+
+    .messages-section {
+        margin-top: 4px;
     }
 
     .story-card {
-        padding: 18px 14px;
-        border-radius: 20px;
+        padding: 12px 14px;
+        border-radius: 22px;
+        gap: 10px;
+        box-shadow: 0 8px 22px rgba(255, 77, 148, 0.22), 4px 4px 0px #000;
     }
 
     .character-display {
-        width: 140px;
-        height: 140px;
+        width: 112px;
+        height: 112px;
+    }
+
+    .speech-wrapper {
+        min-height: 62px;
+    }
+
+    .speech-bubble-story {
+        padding: 10px 14px;
+        border-radius: 16px;
     }
 
     .story-typewriter {
-        font-size: 1.1rem;
-        line-height: 1.5;
+        font-size: 1.04rem;
+        line-height: 1.45;
+    }
+
+    .final-controls {
+        margin-top: 12px;
+    }
+
+    .story-btn.next-flower-btn {
+        padding: 10px 28px;
+        font-size: 1.08rem;
     }
 
     .cake-title {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
     }
 
     .cake-name {
-        font-size: 1.55rem;
+        font-size: 1.45rem;
     }
 }

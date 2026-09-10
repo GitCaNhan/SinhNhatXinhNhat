@@ -139,10 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // ----------------------------------------------------
         // LỜI CHÚC 2: Doraemon xúc động khóc
-        // "Được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui "
+        // "Được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui 🍀"
         // ----------------------------------------------------
         await setCharacter('assets/processed/doremon_khoc.png', 'anim-crying');
-        await typeText("Được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui", 65);
+        await typeText("Được gặp em là điều may mắn và hạnh phúc nhất cuộc đời tui 🍀", 65);
         await delay(3500);
 
         // ----------------------------------------------------

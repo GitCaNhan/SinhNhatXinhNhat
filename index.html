@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Mật mã bí mật Doraemon</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="rain.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,600;0,700;1,600;1,700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="rain.js"></script>
     <script src="seamless.js"></script>
@@ -27,6 +28,16 @@
                 </div>
             </div>
 
+            <!-- Khu vực gợi ý 2 (Góc trên bên phải - Doraemon thứ 2) -->
+            <div class="hint-area top-right">
+                <div class="character-container hint2-box hidden" id="hint2Container">
+                    <div class="speech-bubble tail-right">
+                        <p id="hint2Text">First day</p>
+                    </div>
+                    <img src="assets/goi_y_2.png" alt="Doraemon chui hầm" class="character-img avatar-hint2">
+                </div>
+            </div>
+
             <!-- Khu vực trung tâm (Khung câu hỏi & Doraemon nằm bên trên) -->
             <div class="center-area">
                 <!-- Doraemon nằm thảnh thơi trên viền hộp câu hỏi -->
@@ -39,16 +50,6 @@
                         <button id="submitBtn">Gửi</button>
                     </div>
                     <p id="errorMessage" class="error-message hidden">Chưa đúng người đẹp ơi!</p>
-                </div>
-            </div>
-
-            <!-- Khu vực gợi ý 2 (Góc dưới bên trái - Doraemon chui từ hố lên) -->
-            <div class="hint-area bottom-left">
-                <div class="character-container hint2-box hidden" id="hint2Container">
-                    <div class="speech-bubble tail-bottom">
-                        <p id="hint2Text">First day</p>
-                    </div>
-                    <img src="assets/goi_y_2.png" alt="Doraemon chui hầm" class="character-img avatar-hint2">
                 </div>
             </div>
 
