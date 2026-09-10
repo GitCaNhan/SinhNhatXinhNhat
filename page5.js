@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================== NHẠC NỀN LIÊN TỤC TỪ CÁC TRANG TRƯỚC ====================
     function initContinuousMusic() {
+        if (window.SoundMaster) {
+            window.SoundMaster.playBgMusic('assets/sound_cake.mp3');
+            return;
+        }
         if (!bgMusic) return;
         bgMusic.loop = true;
 
@@ -60,13 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==================== VẼ MỘT NÉT SVG CỤ THỂ ====================
+    // Cache card bounding rect một lần để tránh layout thrashing trên điện thoại
+    let cachedCardRect = paperCard ? paperCard.getBoundingClientRect() : null;
+    window.addEventListener('resize', () => {
+        if (paperCard) cachedCardRect = paperCard.getBoundingClientRect();
+    }, { passive: true });
+
+    // ==================== VẼ MỘT NÉT SVG CỤ THỂ (TỐI ƯU 60FPS) ====================
     function drawSinglePath(path, durationMs = 320) {
         return new Promise((resolve) => {
             const totalLen = path.getTotalLength() || 100;
             const startTime = performance.now();
 
             path.style.strokeDasharray = `${totalLen} ${totalLen}`;
+
+            // Lấy CTM và CardRect một lần trước vòng lặp animate
+            const ctm = path.getScreenCTM();
+            if (!cachedCardRect && paperCard) {
+                cachedCardRect = paperCard.getBoundingClientRect();
+            }
 
             function animate(currentTime) {
                 const elapsed = currentTime - startTime;
@@ -80,21 +96,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const currentLen = totalLen * (1 - ease);
                 path.style.strokeDashoffset = currentLen;
 
-                // Cập nhật vị trí đầu bút vẽ theo nét
-                if (magicPencil && paperCard) {
+                // Cập nhật vị trí đầu bút vẽ bằng translate3d (GPU tăng tốc)
+                if (magicPencil && ctm && cachedCardRect) {
                     try {
                         const drawnLen = totalLen * ease;
                         const pt = path.getPointAtLength(drawnLen);
-                        const ctm = path.getScreenCTM();
-                        if (ctm) {
-                            const screenX = pt.x * ctm.a + pt.y * ctm.c + ctm.e;
-                            const screenY = pt.x * ctm.b + pt.y * ctm.d + ctm.f;
-                            const cardRect = paperCard.getBoundingClientRect();
-                            const relX = screenX - cardRect.left;
-                            const relY = screenY - cardRect.top;
-                            magicPencil.style.transform = `translate(${relX}px, ${relY}px)`;
-                            magicPencil.style.opacity = '1';
-                        }
+                        const screenX = pt.x * ctm.a + pt.y * ctm.c + ctm.e;
+                        const screenY = pt.x * ctm.b + pt.y * ctm.d + ctm.f;
+                        const relX = screenX - cachedCardRect.left;
+                        const relY = screenY - cachedCardRect.top;
+                        magicPencil.style.transform = `translate3d(${relX}px, ${relY}px, 0)`;
+                        magicPencil.style.opacity = '1';
                     } catch (e) {}
                 }
 

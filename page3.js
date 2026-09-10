@@ -46,10 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (storyCursor) storyCursor.style.display = 'inline-block';
 
             if (soundKeyboard) {
-                soundKeyboard.currentTime = 0;
-                soundKeyboard.loop = true;
-                const p = soundKeyboard.play();
-                if (p) p.catch(() => {});
+                if (window.SoundMaster) {
+                    window.SoundMaster.playSfx(soundKeyboard, true);
+                } else {
+                    soundKeyboard.currentTime = 0;
+                    soundKeyboard.loop = true;
+                    const p = soundKeyboard.play();
+                    if (p) p.catch(() => {});
+                }
             }
 
             let index = 0;
@@ -60,8 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     clearInterval(timer);
                     if (soundKeyboard) {
-                        soundKeyboard.pause();
-                        soundKeyboard.currentTime = 0;
+                        if (window.SoundMaster) {
+                            window.SoundMaster.stopSfx(soundKeyboard);
+                        } else {
+                            soundKeyboard.pause();
+                            soundKeyboard.currentTime = 0;
+                        }
                     }
                     if (storyCursor) {
                         setTimeout(() => {
@@ -94,8 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     async function runPage3Timeline() {
         console.log("Bắt đầu kịch bản Bánh sinh nhật & Lời chúc...");
 
-        // 1. Phát nhạc nền bánh sinh nhật
-        if (soundCake) {
+        // 1. Phát nhạc nền bánh sinh nhật xuyên suốt các trang
+        if (window.SoundMaster) {
+            window.SoundMaster.playBgMusic('assets/sound_cake.mp3');
+        } else if (soundCake) {
             soundCake.currentTime = 0;
             soundCake.loop = true;
             const p = soundCake.play();
@@ -162,11 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextToFlowerBtn = document.getElementById('nextToFlowerBtn');
     if (nextToFlowerBtn) {
         nextToFlowerBtn.addEventListener('click', () => {
-            if (soundCake) {
-                sessionStorage.setItem('bgMusicTime', soundCake.currentTime.toString());
-                sessionStorage.setItem('bgMusicPlaying', 'true');
+            if (typeof window.navigateTo === 'function') {
+                window.navigateTo('page4.html');
+            } else {
+                if (soundCake) {
+                    sessionStorage.setItem('bgMusicTime', soundCake.currentTime.toString());
+                    sessionStorage.setItem('bgMusicPlaying', 'true');
+                }
+                window.location.href = 'page4.html';
             }
-            window.location.href = 'page4.html';
         });
     }
 

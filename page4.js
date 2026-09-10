@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================== PHÁT TIẾP TỤC NHẠC NỀN TỪ TRANG 3 ====================
     function initContinuousMusic() {
+        if (window.SoundMaster) {
+            window.SoundMaster.playBgMusic('assets/sound_cake.mp3');
+            return;
+        }
         if (!soundBg) return;
 
         soundBg.loop = true;
@@ -66,10 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cursorEl) cursorEl.style.display = 'inline-block';
 
             if (soundKeyboard) {
-                soundKeyboard.currentTime = 0;
-                soundKeyboard.loop = true;
-                const p = soundKeyboard.play();
-                if (p) p.catch(() => {});
+                if (window.SoundMaster) {
+                    window.SoundMaster.playSfx(soundKeyboard, true);
+                } else {
+                    soundKeyboard.currentTime = 0;
+                    soundKeyboard.loop = true;
+                    const p = soundKeyboard.play();
+                    if (p) p.catch(() => {});
+                }
             }
 
             let index = 0;
@@ -80,8 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     clearInterval(timer);
                     if (soundKeyboard) {
-                        soundKeyboard.pause();
-                        soundKeyboard.currentTime = 0;
+                        if (window.SoundMaster) {
+                            window.SoundMaster.stopSfx(soundKeyboard);
+                        } else {
+                            soundKeyboard.pause();
+                            soundKeyboard.currentTime = 0;
+                        }
                     }
                     if (cursorEl) {
                         setTimeout(() => {
@@ -130,10 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sự kiện khi bấm nút "Tiếp theo ➔" chuyển sang trang vẽ Bánh sinh nhật khổng lồ
     if (nextPage4Btn) {
         nextPage4Btn.addEventListener('click', () => {
-            if (soundBg) {
-                sessionStorage.setItem('bgMusicTime', soundBg.currentTime.toString());
+            if (typeof window.navigateTo === 'function') {
+                window.navigateTo('page5.html');
+            } else {
+                if (soundBg) {
+                    sessionStorage.setItem('bgMusicTime', soundBg.currentTime.toString());
+                }
+                window.location.href = 'page5.html';
             }
-            window.location.href = 'page5.html';
         });
     }
 

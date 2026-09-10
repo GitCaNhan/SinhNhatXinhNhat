@@ -1548,4 +1548,13 @@ body {
         border-radius: 20px;
         gap: 10px;
     }
+
+    /* Tối ưu hiệu năng: giảm độ mờ blur nặng trên màn hình điện thoại để tránh giật lag */
+    .flower__line__leaf {
+        filter: blur(1.5vmin) !important;
+    }
+    .night {
+        background-size: 260px 260px;
+        animation: pinkDustFloat 20s linear infinite alternate;
+    }
 }

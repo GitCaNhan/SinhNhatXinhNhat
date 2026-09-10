@@ -18,8 +18,11 @@ function initRainEffect(item1Src, item2Src, options = {}) {
         document.body.appendChild(container);
     }
 
-    const count1 = options.count1 || 8; // Số lượng vật phẩm 1
-    const count2 = options.count2 || 6; // Số lượng vật phẩm 2
+    const isMobile = window.innerWidth < 768;
+    const defaultCount1 = isMobile ? 3 : 7;
+    const defaultCount2 = isMobile ? 2 : 5;
+    const count1 = options.count1 || defaultCount1;
+    const count2 = options.count2 || defaultCount2;
 
     const isCharacter = (src) => {
         return src.includes('mua_3') || src.includes('mua_4') || src.includes('mua_5') || src.includes('doraemon');

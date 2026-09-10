@@ -53,8 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Phát audio với Promise hoàn thành khi bài phát xong
+    // Phát audio với Promise hoàn thành khi bài phát xong (tích hợp SoundMaster mở khóa di động)
     function playAudio(audioEl) {
+        if (window.SoundMaster) {
+            return window.SoundMaster.playSfx(audioEl);
+        }
         return new Promise((resolve) => {
             if (!audioEl) return resolve();
             audioEl.currentTime = 0;
@@ -101,10 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Bật âm thanh bàn phím lặp lại trong lúc gõ
             if (audioKeyboard) {
-                audioKeyboard.currentTime = 0;
-                audioKeyboard.loop = true;
-                const p = audioKeyboard.play();
-                if (p) p.catch(() => {});
+                if (window.SoundMaster) {
+                    window.SoundMaster.playSfx(audioKeyboard, true);
+                } else {
+                    audioKeyboard.currentTime = 0;
+                    audioKeyboard.loop = true;
+                    const p = audioKeyboard.play();
+                    if (p) p.catch(() => {});
+                }
             }
 
             let index = 0;
@@ -116,8 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearInterval(timer);
                     // Dừng âm thanh bàn phím khi gõ xong
                     if (audioKeyboard) {
-                        audioKeyboard.pause();
-                        audioKeyboard.currentTime = 0;
+                        if (window.SoundMaster) {
+                            window.SoundMaster.stopSfx(audioKeyboard);
+                        } else {
+                            audioKeyboard.pause();
+                            audioKeyboard.currentTime = 0;
+                        }
                     }
                     if (typewriterCursor) {
                         setTimeout(() => {
@@ -316,7 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextToCakeBtn = document.getElementById('nextToCakeBtn');
     if (nextToCakeBtn) {
         nextToCakeBtn.addEventListener('click', () => {
-            window.location.href = 'page3.html';
+            stopAllAudio();
+            if (typeof window.navigateTo === 'function') {
+                window.navigateTo('page3.html');
+            } else {
+                window.location.href = 'page3.html';
+            }
         });
     }
 

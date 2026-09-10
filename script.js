@@ -12,15 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
         initRainEffect('assets/mua_1_nobg.png', 'assets/mua_2_nobg.png');
     }
 
-    const CORRECT_PASSWORD = '1';
+    // Mật khẩu duy nhất chấp nhận các định dạng ngày 28 tháng 2
+    const VALID_PASSWORDS = [
+        '28/2', '28-2', '28_2',
+        '28/02', '28-02', '28_02',
+        '28 2', '28 02'
+    ];
     let failCount = 0;
 
     function checkAnswer() {
-        const answer = answerInput.value.trim();
+        // Chuẩn hóa câu trả lời: bỏ khoảng trắng thừa, chuyển về chữ thường
+        const raw = answerInput.value.trim().toLowerCase();
+        const answer = raw.replace(/\s+/g, ' ');
         
         if (answer === '') return;
 
-        if (answer === CORRECT_PASSWORD) {
+        if (VALID_PASSWORDS.includes(answer)) {
             handleSuccess();
         } else {
             handleFailure();
@@ -101,7 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nextPageBtn) {
         nextPageBtn.addEventListener('click', () => {
             console.log("Chuyển sang trang tiếp theo...");
-            window.location.href = 'page2.html';
+            if (typeof window.navigateTo === 'function') {
+                window.navigateTo('page2.html');
+            } else {
+                window.location.href = 'page2.html';
+            }
         });
     }
 });
