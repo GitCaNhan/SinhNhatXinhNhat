@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Mật mã bí mật Doraemon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rain.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="rain.js"></script>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <!-- Vòng cung tròn màu xanh nước biển ở đáy giống thiết kế -->
+        <div class="bottom-blue-circle"></div>
+        
+        <div class="layout">
+            <!-- Khu vực gợi ý 1 (Góc trên bên trái) -->
+            <div class="hint-area top-left">
+                <div class="character-container hint1-box hidden" id="hint1Container">
+                    <img src="assets/goi_y_1.png" alt="Doraemon cỗ máy thời gian" class="character-img avatar-hint1">
+                    <div class="speech-bubble tail-left">
+                        <p id="hint1Text">Gợi ý 1</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Khu vực trung tâm (Khung câu hỏi & Doraemon nằm bên trên) -->
+            <div class="center-area">
+                <!-- Doraemon nằm thảnh thơi trên viền hộp câu hỏi -->
+                <img src="assets/doraemon_top.png" alt="Doraemon nằm" class="character-img avatar-top doraemon-top">
+                
+                <div class="question-box">
+                    <h1>Câu hỏi?</h1>
+                    <div class="input-group">
+                        <input type="text" id="answerInput" placeholder="nhập câu trả lời" autocomplete="off">
+                        <button id="submitBtn">Gửi</button>
+                    </div>
+                    <p id="errorMessage" class="error-message hidden">Chưa đúng người đẹp ơi!</p>
+                </div>
+            </div>
+
+            <!-- Khu vực gợi ý 2 (Góc dưới bên trái - Doraemon chui từ hố lên) -->
+            <div class="hint-area bottom-left">
+                <div class="character-container hint2-box hidden" id="hint2Container">
+                    <div class="speech-bubble tail-bottom">
+                        <p id="hint2Text">Gợi ý 2</p>
+                    </div>
+                    <img src="assets/goi_y_2.png" alt="Doraemon chui hầm" class="character-img avatar-hint2">
+                </div>
+            </div>
+
+            <!-- Khu vực góc dưới bên phải (Doraemon ngồi vẫy tay trên đồi xanh) -->
+            <div class="hint-area bottom-right">
+                 <img src="assets/doraemon_bottom.png" alt="Doraemon vẫy tay" class="character-img avatar-bottom">
+            </div>
+        </div>
+    </div>
+
+    <!-- Màn hình chúc mừng khi nhập đúng mật mã -->
+    <div id="successScreen" class="success-screen hidden">
+        <div class="success-card">
+            <!-- Bạn có thể ghi nội dung lời chúc / nịnh vào giữa thẻ h1 dưới đây -->
+            <h1 class="compliment" id="complimentText"></h1>
+            
+            <p class="success-sub">Bí mật tiếp theo đang chờ em khám phá nè...</p>
+            <button id="nextPageBtn" class="next-btn">
+                <span>Chuyển sang trang tiếp theo</span>
+                <span class="btn-arrow">➔</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

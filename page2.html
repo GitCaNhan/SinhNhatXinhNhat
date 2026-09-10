@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Bí Mật Doraemon - Điều Bất Ngờ</title>
+    <link rel="stylesheet" href="page2.css">
+    <link rel="stylesheet" href="rain.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Mali:wght@600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="rain.js"></script>
+</head>
+
+<body>
+    <div class="page-container" id="pageContainer">
+        <!-- Khung Text chạy mở đầu bằng typewriter kèm sound keyboard -->
+        <header class="top-header" id="topHeader">
+            <div class="intro-text-box" id="introTextBox">
+                <span id="typewriterText" class="typewriter-text"></span>
+                <span class="typewriter-cursor" id="typewriterCursor">|</span>
+            </div>
+        </header>
+
+        <!-- Lưới 6 ảnh sắp xếp 2 hàng x 3 cột chuẩn bản vẽ -->
+        <main class="grid-container" id="gridContainer">
+            <!-- Hàng 1 -->
+            <!-- Ảnh 1 -->
+            <div class="photo-card" id="card1">
+                <div class="photo-wrapper">
+                    <img src="assets/processed/anh1.png" alt="Doraemon 1" class="photo-img" id="img1">
+                </div>
+                <!-- Dấu '...' ở góc dưới bên phải của ảnh 1 -->
+                <div class="dots-corner" id="dots1">
+                    <span class="dot d1">.</span>
+                    <span class="dot d2">.</span>
+                    <span class="dot d3">.</span>
+                </div>
+            </div>
+
+            <!-- Ảnh 2 -->
+            <div class="photo-card" id="card2">
+                <div class="photo-wrapper">
+                    <img src="assets/processed/anh2.png" alt="Doraemon 2" class="photo-img" id="img2">
+                </div>
+                <!-- Dấu '...' ở góc dưới bên phải của ảnh 2 -->
+                <div class="dots-corner" id="dots2">
+                    <span class="dot d1">.</span>
+                    <span class="dot d2">.</span>
+                    <span class="dot d3">.</span>
+                </div>
+            </div>
+
+            <!-- Ảnh 3 (không có dấu ...) -->
+            <div class="photo-card" id="card3">
+                <div class="photo-wrapper">
+                    <img src="assets/processed/anh3.png" alt="Doraemon 3" class="photo-img" id="img3">
+                </div>
+            </div>
+
+            <!-- Hàng 2 -->
+            <!-- Ảnh 4 (không cần nhạc) -->
+            <div class="photo-card" id="card4">
+                <div class="photo-wrapper">
+                    <img src="assets/processed/anh4.png" alt="Doraemon 4" class="photo-img" id="img4">
+                </div>
+            </div>
+
+            <!-- Ảnh 5 -->
+            <div class="photo-card" id="card5">
+                <div class="photo-wrapper">
+                    <img src="assets/processed/anh5.png" alt="Doraemon 5" class="photo-img" id="img5">
+                </div>
+            </div>
+
+            <!-- Ảnh 6 (Bảo bối Doraemon với tia sáng hào quang) -->
+            <div class="photo-card" id="card6">
+                <!-- Vầng hào quang ánh sáng bảo bối Doraemon -->
+                <div class="treasure-aura" id="treasureAura">
+                    <div class="aura-rays sunburst"></div>
+                    <div class="aura-rays sunburst-reverse"></div>
+                    <div class="aura-glow"></div>
+                    <div class="aura-ring"></div>
+                    <div class="sparkles-container" id="sparkles"></div>
+                </div>
+                <div class="photo-wrapper photo6-wrapper" id="photo6Wrapper">
+                    <img src="assets/processed/anh6.png" alt="Bảo bối đặc biệt nhất" class="photo-img photo6-img"
+                        id="img6">
+                </div>
+            </div>
+        </main>
+
+        <!-- Thẻ chúc mừng hiển thị ở cuối khi ảnh 6 đã phóng to trung tâm -->
+        <div class="final-banner hidden" id="finalBanner">
+            <h1 class="final-title">✨ Là ngày sinh nhật của một bảo bối siêu cấp vip pro cute nhất thế giới 💫</h1>
+            <div class="action-buttons">
+                <button id="nextToCakeBtn" class="control-btn next-cake-btn">Tiếp theo ➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khai báo các file âm thanh -->
+    <audio id="audioKeyboard" src="assets/sound_keyboard.mp3" preload="auto"></audio>
+    <audio id="audio1" src="assets/sound%20%E1%BA%A3nh%201.mp3" preload="auto"></audio>
+    <audio id="audio2" src="assets/sound%20%E1%BA%A3nh%202.mp3" preload="auto"></audio>
+    <audio id="audio3" src="assets/sound%20%E1%BA%A3nh%203.mp3" preload="auto"></audio>
+    <audio id="audio6" src="assets/sound%20%E1%BA%A3nh%206.webm" preload="auto"></audio>
+
+    <script src="page2.js"></script>
+</body>
+
+</html>

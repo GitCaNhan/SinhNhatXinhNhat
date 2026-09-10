@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Happy Birthday Hương Giang 🎂✨</title>
+    <link rel="stylesheet" href="css/love.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Dancing+Script:wght@700&family=Mali:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Nhạc nền tiếp tục phát từ các trang trước -->
+    <audio loop="loop" id="audios" preload="auto">
+        <source src="../assets/sound_cake.mp3" type="audio/mp3" />
+    </audio>
+
+    <!-- Nền trời đêm huyền ảo phát sáng -->
+    <div class="night-bg">
+        <div class="stars"></div>
+    </div>
+
+    <div class="container">
+        <!-- Doraemon ở góc dưới bên trái bắn ra các icon bánh sinh nhật -->
+        <div class="body_left" id="doraemonShooter">
+            <div class="doraemon-wrap">
+                <img src="images/doraemon.png" alt="Doraemon" class="doraemon-shooter-img" id="doraemonImg" ondragstart='return false;'>
+                <div class="muzzle-flash" id="muzzleFlash">🎂✨</div>
+            </div>
+        </div>
+
+        <!-- Khung hình bánh sinh nhật khổng lồ được ghép từ 92 icon bánh nhỏ -->
+        <div class="body_center love">
+            <div class="block">
+                <div class="div1"></div>
+                <div class="div2"></div>
+                <div class="div3"></div>
+                <div class="div4"></div>
+            </div>
+        </div>
+
+        <!-- Khung lời chúc bí mật xuất hiện sau khi hoàn thành bánh khổng lồ -->
+        <div class="wish-banner" id="wishBanner">
+            <div class="wish-text">
+                Happy Birthday <span class="tiny-t" id="tinyT" title="thương">t</span>Hương Zang ✨
+            </div>
+            <p class="wish-subtext">Chúc em tuổi mới luôn ngọt ngào, rạng rỡ và hạnh phúc ngập tràn! 🎂💖</p>
+            <p class="hint-zoom">🔍 (thử zoom to vào chữ Hương Zang xem có điều bí mật gì nhé...)</p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/love.js"></script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    background-color: #ffffff;
+    font-family: 'Comic Neue', cursive, sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Vòng đồi màu xanh Doraemon ở đáy màn hình */
+.bottom-blue-circle {
+    position: fixed;
+    bottom: -36vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140vw;
+    height: 72vh;
+    background-color: #00a0e9;
+    border: 7px solid #000;
+    border-radius: 50% 50% 0 0;
+    border-bottom: none;
+    z-index: 5; /* Nằm đè lên trên hiệu ứng mưa (z-index: 2) để mưa rơi ẩn phía sau đồi xanh */
+    pointer-events: none;
+}
+
+.layout {
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* ==================== KHU VỰC TRUNG TÂM ==================== */
+.center-area {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    max-width: 90vw;
+    z-index: 10;
+}
+
+.question-box {
+    background-color: #00a0e9;
+    border: 5px solid #000;
+    border-radius: 24px;
+    padding: 35px 25px 25px;
+    text-align: center;
+    box-shadow: 6px 6px 0px #000;
+    position: relative;
+}
+
+.question-box h1 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 85%;
+    max-width: 320px;
+    padding: 12px 16px;
+    font-size: 1.4rem;
+    border: 3px solid #000;
+    border-radius: 12px;
+    text-align: center;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    outline: none;
+    background: #fff;
+    transition: box-shadow 0.2s;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+button#submitBtn {
+    padding: 10px 32px;
+    font-size: 1.4rem;
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px #000;
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+}
+
+button#submitBtn:hover {
+    background-color: #fef08a;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+button#submitBtn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+.error-message {
+    color: #e11d48;
+    font-size: 1.15rem;
+    margin-top: 14px;
+    font-weight: bold;
+    background: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 0px #000;
+    display: inline-block;
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* Doraemon nằm phía trên hộp câu hỏi */
+.doraemon-top {
+    position: absolute;
+    top: -100px;
+    right: 20px;
+    width: 200px;
+    height: auto;
+    z-index: 12;
+    filter: drop-shadow(2px 5px 6px rgba(0,0,0,0.25));
+    pointer-events: none;
+}
+
+/* ==================== CÁC VỊ TRÍ HINT VÀ NHÂN VẬT ==================== */
+.hint-area {
+    position: absolute;
+}
+
+.top-left {
+    top: 4%;
+    left: 3%;
+    z-index: 15;
+}
+
+.bottom-left {
+    bottom: 2%;
+    left: 4%;
+    z-index: 15;
+}
+
+.bottom-right {
+    bottom: 1%;
+    right: 3%;
+    z-index: 15;
+}
+
+/* Kích thước ảnh từng nhân vật (đã zoom to theo yêu cầu) */
+.character-img {
+    object-fit: contain;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.18));
+    display: block;
+}
+
+.avatar-hint1 {
+    width: 185px;
+    height: auto;
+}
+
+.avatar-hint2 {
+    width: 180px;
+    height: auto;
+}
+
+.avatar-bottom {
+    width: 250px;
+    height: auto;
+    animation: gentleWiggle 3s ease-in-out infinite alternate;
+}
+
+@keyframes gentleWiggle {
+    0% { transform: rotate(-2deg); }
+    100% { transform: rotate(3deg); }
+}
+
+/* Layout của Hint 1: nằm ngang */
+.hint1-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Layout của Hint 2: XẾP DỌC để bong bóng nằm TRÊN ĐẦU, không chạm vào box câu hỏi */
+.hint2-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Container animation khi xuất hiện */
+.character-container {
+    opacity: 1;
+    transition: opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.character-container.hidden {
+    display: flex !important;
+    opacity: 0;
+    transform: scale(0.6) translateY(30px);
+    pointer-events: none;
+}
+
+/* ==================== BONG BÓNG LỜI THOẠI ==================== */
+.speech-bubble {
+    position: relative;
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 18px;
+    padding: 12px 18px;
+    max-width: 220px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 4px 4px 0px #000;
+    animation: floatBubble 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes floatBubble {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-6px); }
+}
+
+/* Đuôi bóng chỉ sang trái (Dành cho Hint 1) */
+.speech-bubble.tail-left::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -14px;
+    transform: translateY(-50%);
+    border-width: 9px 14px 9px 0;
+    border-style: solid;
+    border-color: transparent #000 transparent transparent;
+}
+.speech-bubble.tail-left::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    border-width: 7px 11px 7px 0;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+}
+
+/* Đuôi bóng chỉ xuống dưới (Dành cho Hint 2 - chỉ vào đầu Doraemon) */
+.speech-bubble.tail-bottom::before {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 14px 9px 0 9px;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+.speech-bubble.tail-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 11px 7px 0 7px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==================== MÀN HÌNH THÀNH CÔNG ==================== */
+.success-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: radial-gradient(circle, #fff0f7 0%, #ffd6eb 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    padding: 20px;
+}
+
+.success-card {
+    background: #ffffff;
+    border: 5px solid #ff4d94;
+    border-radius: 28px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 16px 32px rgba(255, 77, 148, 0.25), 6px 6px 0px #000;
+    max-width: 480px;
+    width: 90%;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.success-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.compliment {
+    font-size: 2rem;
+    color: #e11d48;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.compliment:empty {
+    display: none;
+}
+
+.success-sub {
+    font-size: 1.15rem;
+    color: #64748b;
+    margin-bottom: 24px;
+}
+
+.next-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #ff4d94, #f43f5e);
+    color: #fff;
+    font-size: 1.25rem;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    padding: 14px 28px;
+    border: 3px solid #000;
+    border-radius: 50px;
+    box-shadow: 4px 4px 0px #000;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.next-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.next-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-arrow {
+    font-size: 1.3rem;
+    transition: transform 0.2s;
+}
+
+.next-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ==================== TỐI ƯU GIAO DIỆN IPHONE & MOBILE ==================== */
+@media (max-width: 768px) {
+    .bottom-blue-circle {
+        bottom: -15vh;
+        width: 170vw;
+        height: 48vh;
+        border-width: 5px;
+    }
+
+    .center-area {
+        width: 88%;
+        top: 46%;
+    }
+    
+    .question-box {
+        padding: 24px 16px 18px;
+        border-width: 4px;
+        border-radius: 20px;
+    }
+
+    .question-box h1 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 10px;
+        border-width: 2.5px;
+    }
+
+    button#submitBtn {
+        font-size: 1.2rem;
+        padding: 8px 26px;
+        border-width: 2.5px;
+    }
+
+    /* Thu nhỏ tỷ lệ Doraemon nằm vừa khít hộp trên mobile */
+    .doraemon-top {
+        top: -72px;
+        right: 10px;
+        width: 145px;
+    }
+
+    /* Kích thước các nhân vật cho mobile (đã zoom to hơn) */
+    .avatar-hint1 {
+        width: 115px;
+    }
+
+    .avatar-hint2 {
+        width: 115px;
+    }
+
+    .avatar-bottom {
+        width: 165px;
+    }
+
+    /* Bong bóng thoại trên mobile */
+    .speech-bubble {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        max-width: 125px;
+        border-width: 2px;
+        border-radius: 14px;
+    }
+
+    .speech-bubble.tail-left::before {
+        border-width: 7px 11px 7px 0;
+        left: -11px;
+    }
+    .speech-bubble.tail-left::after {
+        border-width: 5px 8px 5px 0;
+        left: -8px;
+    }
+
+    .speech-bubble.tail-bottom::before {
+        border-width: 11px 7px 0 7px;
+        bottom: -11px;
+    }
+    .speech-bubble.tail-bottom::after {
+        border-width: 8px 5px 0 5px;
+        bottom: -8px;
+    }
+
+    /* Căn lề các góc cho màn hình dọc (tối ưu khi nhân vật to hơn) */
+    .top-left {
+        top: 2%;
+        left: 2%;
+    }
+
+    .bottom-left {
+        bottom: 2%;
+        left: 3%;
+    }
+
+    .bottom-right {
+        bottom: 1%;
+        right: 2%;
+    }
+
+    /* Màn hình thành công trên mobile */
+    .compliment {
+        font-size: 1.5rem;
+    }
+
+    .next-btn {
+        font-size: 1.05rem;
+        padding: 12px 20px;
+        width: 100%;
+    }
+}

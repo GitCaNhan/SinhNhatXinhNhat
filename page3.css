@@ -1,0 +1,421 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-pink-start: #fff0f7;
+    --bg-pink-end: #ffd6eb;
+    --dora-blue: #00a0e9;
+    --accent-pink: #ff4d94;
+    --accent-dark-pink: #e11d48;
+    --card-bg: #ffffff;
+}
+
+html, body {
+    width: 100%;
+    height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: radial-gradient(circle, var(--bg-pink-start) 0%, var(--bg-pink-end) 100%);
+    background-color: var(--bg-pink-end);
+    font-family: 'Mali', 'Comic Neue', cursive, sans-serif;
+    user-select: none;
+    position: relative;
+}
+
+.page3-container {
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 16px 40px;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+/* ==================== PHẦN 1: BÁNH SINH NHẬT (BIRTHDAY-CAKE-TCW) ==================== */
+.cake-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 10px;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                margin 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.8s ease;
+}
+
+/* Khi bánh sinh nhật thu nhỏ nhường chỗ cho phần lời chúc */
+.cake-section.compact {
+    transform: scale(0.72);
+    margin-top: -30px;
+    margin-bottom: -40px;
+}
+
+#cake {
+    display: block;
+    position: relative;
+    margin: -10em auto 0 auto;
+    filter: drop-shadow(0 12px 20px rgba(225, 29, 72, 0.15));
+}
+
+/* ==================== CÂY NẾN (CANDLE) ==================== */
+.candle-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.cake-candle {
+    background: #ffffff;
+    border-radius: 10px;
+    position: absolute;
+    top: 228px;
+    left: 50%;
+    margin-left: -2.5px;
+    margin-top: -8.33px;
+    width: 6px;
+    height: 38px;
+    transform: translateY(-300px);
+    backface-visibility: hidden;
+    animation: candleDropIn 600ms 5.5s ease-out forwards;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    z-index: 10;
+}
+
+.cake-candle:after,
+.cake-candle:before {
+    background: rgba(255, 77, 148, 0.6);
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+}
+
+.cake-candle:after {
+    top: 25%;
+    left: 0;
+}
+
+.cake-candle:before {
+    top: 50%;
+    left: 0;
+}
+
+@keyframes candleDropIn {
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* ==================== NGỌN LỬA NẾN (FIRE / FUEGO) ==================== */
+.fuego {
+    border-radius: 100%;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -3px;
+    width: 7px;
+    height: 20px;
+}
+
+.fuego:nth-child(1) { animation: fuego 2s 6s infinite; }
+.fuego:nth-child(2) { animation: fuego 1.5s 6s infinite; }
+.fuego:nth-child(3) { animation: fuego 1s 6s infinite; }
+.fuego:nth-child(4) { animation: fuego 0.5s 6s infinite; }
+.fuego:nth-child(5) { animation: fuego 0.2s 6s infinite; }
+
+@keyframes fuego {
+    0%, 100% {
+        background: rgba(255, 230, 80, 0.8);
+        box-shadow: 0 0 35px 10px rgba(255, 200, 50, 0.5), 0 0 15px 4px rgba(255, 77, 148, 0.4);
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        background: rgba(255, 77, 148, 0.4);
+        box-shadow: 0 0 35px 15px rgba(255, 200, 50, 0.3), 0 0 10px 2px rgba(255, 77, 148, 0.3);
+        transform: translateY(-16px) scale(0);
+    }
+}
+
+/* ==================== CHỮ DƯỚI BÁNH SINH NHẬT ==================== */
+.cake-text {
+    text-align: center;
+    margin-top: -15px;
+    animation: fadeInCakeText 1s 6.2s forwards;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.5s ease;
+}
+
+@keyframes fadeInCakeText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cake-title {
+    color: #e11d48;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(255, 77, 148, 0.2);
+}
+
+.cake-name {
+    color: #ff2a68;
+    font-family: 'Mali', cursive;
+    font-size: 1.85rem;
+    font-weight: 700;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(255, 42, 104, 0.25);
+}
+
+/* ==================== PHẦN 2: LỜI CHÚC & ẢNH DORAEMON TUẦN TỰ ==================== */
+.messages-section {
+    width: 100%;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.messages-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.messages-section.hidden {
+    display: none;
+}
+
+/* Thẻ tin nhắn sinh nhật */
+.story-card {
+    width: 100%;
+    background: #ffffff;
+    border: 4px solid #ff4d94;
+    border-radius: 28px;
+    box-shadow: 0 12px 28px rgba(255, 77, 148, 0.25), 5px 5px 0px #000;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    overflow: visible;
+}
+
+/* Khung ảnh Doraemon biểu cảm */
+.character-display {
+    width: 170px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.character-anim {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.15));
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Animation cho Doraemon Em Bé */
+.character-anim.anim-baby {
+    animation: babyBounce 2s ease-in-out infinite;
+}
+
+@keyframes babyBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-10px) rotate(-3deg); }
+    70% { transform: translateY(-4px) rotate(3deg); }
+}
+
+/* Animation cho Doraemon Khóc xúc động */
+.character-anim.anim-crying {
+    animation: cryingWobble 1.8s ease-in-out infinite;
+}
+
+@keyframes cryingWobble {
+    0%, 100% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.05) translateY(-5px); }
+}
+
+/* Animation cho Doraemon Hạnh phúc */
+.character-anim.anim-happy {
+    animation: happyJoy 1.5s ease-in-out infinite;
+}
+
+@keyframes happyJoy {
+    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+    50% { transform: translateY(-12px) scale(1.06) rotate(2deg); }
+}
+
+/* Khung lời thoại typewriter */
+.speech-wrapper {
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.speech-bubble-story {
+    background: #fff0f7;
+    border: 3px solid #ff4d94;
+    border-radius: 20px;
+    padding: 16px 22px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 3px 3px 0px #000;
+}
+
+.story-typewriter {
+    display: inline;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #e11d48;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.story-cursor {
+    display: inline-block;
+    color: #ff4d94;
+    font-weight: 900;
+    font-size: 1.3rem;
+    margin-left: 2px;
+    animation: blinkStoryCursor 0.7s infinite;
+}
+
+@keyframes blinkStoryCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ==================== CÁC NÚT ĐIỀU KHIỂN CUỐI CÙNG ==================== */
+.final-controls {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 22px;
+    animation: popUpControls 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.final-controls.hidden {
+    display: none;
+}
+
+@keyframes popUpControls {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.story-btn {
+    border: 2px solid #000;
+    box-shadow: 3px 3px 0px #000;
+    border-radius: 14px;
+    padding: 10px 22px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.story-btn.next-flower-btn {
+    background: linear-gradient(135deg, #ff477e, #ff2a68);
+    color: #ffffff;
+    font-size: 1.15rem;
+    padding: 12px 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(255, 42, 104, 0.4), 3px 3px 0px #000;
+    animation: pulseFlowerNext 1.8s infinite;
+}
+
+@keyframes pulseFlowerNext {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+.story-btn.replay-btn {
+    background: #ffcc00;
+    color: #000;
+}
+
+.story-btn.home-btn {
+    background: #00a0e9;
+    color: #fff;
+}
+
+.story-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000;
+}
+
+.story-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 600px) {
+    .page3-container {
+        padding: 12px 10px 30px;
+    }
+
+    .cake-section.compact {
+        transform: scale(0.62);
+        margin-top: -45px;
+        margin-bottom: -55px;
+    }
+
+    .story-card {
+        padding: 18px 14px;
+        border-radius: 20px;
+    }
+
+    .character-display {
+        width: 140px;
+        height: 140px;
+    }
+
+    .story-typewriter {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+
+    .cake-title {
+        font-size: 1.35rem;
+    }
+
+    .cake-name {
+        font-size: 1.55rem;
+    }
+}
