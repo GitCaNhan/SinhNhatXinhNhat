@@ -225,12 +225,12 @@ button#submitBtn:active {
     gap: 12px;
 }
 
-/* Layout của Hint 2: nằm ngang ở góc trên bên phải */
+/* Layout của Hint 2: XẾP DỌC để bong bóng nằm TRÊN ĐẦU Doraemon */
 .hint2-box {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    flex-direction: row-reverse;
-    gap: 12px;
+    gap: 6px;
 }
 
 /* Container animation khi xuất hiện */
@@ -439,7 +439,7 @@ button#submitBtn:active {
 
     .center-area {
         width: 88%;
-        top: 38%; /* Nâng cao lên để không bị che khi bàn phím ảo iPhone xuất hiện */
+        top: 42%;
     }
     
     .question-box {

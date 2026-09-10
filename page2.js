@@ -311,11 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
         await delay(250);
         card6.classList.add('center-stage');
 
-        // Nổ pháo hoa mừng bảo bối xuất hiện
-        await delay(1200);
-        fireConfettiCelebration();
-
         // Chờ âm thanh 6 tiếp tục ngân vang và hoàn tất
+        await delay(1200);
         await pAudio6;
 
         // Hiện banner lời chúc và các nút điều khiển

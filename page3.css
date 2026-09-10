@@ -67,6 +67,48 @@ html, body {
     filter: drop-shadow(0 12px 20px rgba(225, 29, 72, 0.15));
 }
 
+/* ==================== ẨN CÁC PHẦN BÁNH TRƯỚC KHI RƠI ==================== */
+.cake-plate {
+    opacity: 0;
+    animation: showCakePiece 0.3s 0.8s forwards;
+}
+
+.cake-layer-1 {
+    opacity: 0;
+    animation: showCakePiece 0.01s 1.0s forwards;
+}
+
+.cake-filling-1 {
+    opacity: 0;
+    animation: showCakePiece 0.01s 1.8s forwards;
+}
+
+.cake-layer-2 {
+    opacity: 0;
+    animation: showCakePiece 0.01s 2.3s forwards;
+}
+
+.cake-filling-2 {
+    opacity: 0;
+    animation: showCakePiece 0.01s 2.8s forwards;
+}
+
+.cake-layer-3 {
+    opacity: 0;
+    animation: showCakePiece 0.01s 3.3s forwards;
+}
+
+.cake-cream {
+    opacity: 0;
+    animation: showCakePiece 0.01s 3.6s forwards;
+}
+
+@keyframes showCakePiece {
+    to {
+        opacity: 1;
+    }
+}
+
 /* ==================== CÂY NẾN (CANDLE) ==================== */
 .candle-wrapper {
     position: relative;
@@ -87,6 +129,7 @@ html, body {
     width: 6px;
     height: 38px;
     transform: translateY(-300px);
+    opacity: 0;
     backface-visibility: hidden;
     animation: candleDropIn 600ms 5.5s ease-out forwards;
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
@@ -113,7 +156,16 @@ html, body {
 }
 
 @keyframes candleDropIn {
-    to {
+    0% {
+        opacity: 0;
+        transform: translateY(-300px);
+    }
+    1% {
+        opacity: 1;
+        transform: translateY(-300px);
+    }
+    100% {
+        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -127,6 +179,7 @@ html, body {
     margin-left: -3px;
     width: 7px;
     height: 20px;
+    opacity: 0;
 }
 
 .fuego:nth-child(1) { animation: fuego 2s 6s infinite; }
@@ -137,11 +190,13 @@ html, body {
 
 @keyframes fuego {
     0%, 100% {
+        opacity: 1;
         background: rgba(255, 230, 80, 0.8);
         box-shadow: 0 0 35px 10px rgba(255, 200, 50, 0.5), 0 0 15px 4px rgba(255, 77, 148, 0.4);
         transform: translateY(0) scale(1);
     }
     50% {
+        opacity: 0.8;
         background: rgba(255, 77, 148, 0.4);
         box-shadow: 0 0 35px 15px rgba(255, 200, 50, 0.3), 0 0 10px 2px rgba(255, 77, 148, 0.3);
         transform: translateY(-16px) scale(0);

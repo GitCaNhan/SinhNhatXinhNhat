@@ -21,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let failCount = 0;
 
     function checkAnswer() {
+        // Tự động thu bàn phím ảo trên điện thoại để không che màn hình và gợi ý 2
+        if (answerInput) {
+            answerInput.blur();
+        }
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+            document.activeElement.blur();
+        }
+
         // Chuẩn hóa câu trả lời: bỏ khoảng trắng thừa, chuyển về chữ thường
         const raw = answerInput.value.trim().toLowerCase();
         const answer = raw.replace(/\s+/g, ' ');
@@ -55,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { answerInput.style.transform = 'translateX(0)'; }, 200);
 
         answerInput.value = '';
-        answerInput.focus();
+        // Đảm bảo bàn phím ảo rút xuống để người dùng thấy gợi ý 2 rõ ràng
+        answerInput.blur();
     }
 
     function handleSuccess() {
