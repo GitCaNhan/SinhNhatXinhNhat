@@ -32,7 +32,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 16px 40px;
+    padding: 12px 16px 36px;
     position: relative;
     max-width: 800px;
     margin: 0 auto;
@@ -48,16 +48,20 @@ html, body {
     justify-content: center;
     position: relative;
     padding-top: 10px;
+    margin-top: -30px;
+    transform: scale(1.7);
+    transform-origin: center 60%;
     transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
                 margin 1.2s cubic-bezier(0.25, 1, 0.5, 1),
                 opacity 0.8s ease;
 }
 
 /* Khi bánh sinh nhật thu nhỏ nhường chỗ cho phần lời chúc */
+/* Giữ bánh to rõ ràng, nổi bật, tỷ lệ cân đối với khung lời chúc */
 .cake-section.compact {
-    transform: scale(0.72);
-    margin-top: -30px;
-    margin-bottom: -40px;
+    transform: scale(1.35);
+    margin-top: -50px;
+    margin-bottom: -30px;
 }
 
 #cake {
@@ -442,15 +446,22 @@ html, body {
 /* ==================== RESPONSIVE CHO ĐIỆN THOẠI (IPHONE 16 PLUS / MOBILE) ==================== */
 @media (max-width: 600px) {
     .page3-container {
-        padding: 8px 12px calc(18px + env(safe-area-inset-bottom, 12px));
+        padding: 6px 12px calc(14px + env(safe-area-inset-bottom, 12px));
         min-height: 100dvh;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
+    .cake-section {
+        transform: scale(1.6);
+        transform-origin: center 60%;
+        margin-top: -30px;
+    }
+
+    /* Trên mobile giữ bánh to rõ rệt (1.28 thay vì 0.84), nổi bật cả bánh và dòng chữ chúc */
     .cake-section.compact {
-        transform: scale(0.55);
-        margin-top: -65px;
-        margin-bottom: -65px;
+        transform: scale(1.28);
+        margin-top: -55px;
+        margin-bottom: -32px;
     }
 
     .messages-section {

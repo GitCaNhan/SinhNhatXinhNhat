@@ -27,6 +27,9 @@
                     document.body.appendChild(el);
                 }
                 this.bgAudio = el;
+                this.bgAudio.addEventListener('timeupdate', () => {
+                    sessionStorage.setItem('bgMusicTime', this.bgAudio.currentTime.toString());
+                });
             }
             this.bindUnlockGesture();
         },
@@ -229,6 +232,11 @@
         console.log("Điều hướng mượt mà đến:", targetUrl);
         // Tận dụng cử chỉ click/touch hiện tại để mở khóa âm thanh
         SoundMaster.unlock();
+
+        // Kích hoạt ngay nhạc nền bánh sinh nhật đồng bộ trước khi fetch/chuyển cảnh
+        if (targetUrl.includes('page3') || targetUrl.includes('page4') || targetUrl.includes('page5')) {
+            SoundMaster.playBgMusic('assets/sound_cake.mp3');
+        }
 
         try {
             // Tải nội dung trang mới qua fetch

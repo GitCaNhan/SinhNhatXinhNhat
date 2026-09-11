@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initPage3() {
     const cakeSection = document.getElementById('cakeSection');
     const messagesSection = document.getElementById('messagesSection');
     const charImg = document.getElementById('charImg');
@@ -187,14 +187,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tự động kích hoạt kịch bản
     runPage3Timeline();
 
-    // Hỗ trợ autoplay nếu trình duyệt cần cử chỉ người dùng
+    // Hỗ trợ bật âm thanh ngay từ cử chỉ đầu tiên nếu bị trình duyệt chặn
     const enableAudio = () => {
-        if (soundCake && soundCake.paused) {
+        if (window.SoundMaster) {
+            window.SoundMaster.playBgMusic('assets/sound_cake.mp3');
+        } else if (soundCake && soundCake.paused) {
             soundCake.play().catch(() => {});
         }
-        window.removeEventListener('click', enableAudio);
-        window.removeEventListener('touchstart', enableAudio);
+        window.removeEventListener('click', enableAudio, true);
+        window.removeEventListener('touchstart', enableAudio, true);
     };
-    window.addEventListener('click', enableAudio, { once: true });
-    window.addEventListener('touchstart', enableAudio, { once: true });
-});
+    window.addEventListener('click', enableAudio, { once: true, capture: true });
+    window.addEventListener('touchstart', enableAudio, { once: true, capture: true });
+}
+
+// Khởi chạy an toàn ngay khi sẵn sàng
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPage3);
+} else {
+    initPage3();
+}

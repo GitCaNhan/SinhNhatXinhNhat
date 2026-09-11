@@ -325,9 +325,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nextToCakeBtn) {
         nextToCakeBtn.addEventListener('click', () => {
             stopAllAudio();
+            // Khởi động nhạc bánh sinh nhật ngay tức thì trong cử chỉ click trực tiếp của người dùng
+            if (window.SoundMaster) {
+                window.SoundMaster.playBgMusic('assets/sound_cake.mp3');
+            }
             if (typeof window.navigateTo === 'function') {
                 window.navigateTo('page3.html');
             } else {
+                sessionStorage.setItem('bgMusicPlaying', 'true');
+                sessionStorage.setItem('bgMusicTime', '0');
                 window.location.href = 'page3.html';
             }
         });
