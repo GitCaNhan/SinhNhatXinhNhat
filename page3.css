@@ -13,7 +13,8 @@
     --card-bg: #ffffff;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100dvh;
     overflow-x: hidden;
@@ -51,9 +52,9 @@ html, body {
     margin-top: -30px;
     transform: scale(1.7);
     transform-origin: center 60%;
-    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                margin 1.2s cubic-bezier(0.25, 1, 0.5, 1),
-                opacity 0.8s ease;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+        margin 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.8s ease;
 }
 
 /* Khi bánh sinh nhật thu nhỏ nhường chỗ cho phần lời chúc */
@@ -164,10 +165,12 @@ html, body {
         opacity: 0;
         transform: translateY(-300px);
     }
+
     1% {
         opacity: 1;
         transform: translateY(-300px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -186,19 +189,36 @@ html, body {
     opacity: 0;
 }
 
-.fuego:nth-child(1) { animation: fuego 2s 6s infinite; }
-.fuego:nth-child(2) { animation: fuego 1.5s 6s infinite; }
-.fuego:nth-child(3) { animation: fuego 1s 6s infinite; }
-.fuego:nth-child(4) { animation: fuego 0.5s 6s infinite; }
-.fuego:nth-child(5) { animation: fuego 0.2s 6s infinite; }
+.fuego:nth-child(1) {
+    animation: fuego 2s 6s infinite;
+}
+
+.fuego:nth-child(2) {
+    animation: fuego 1.5s 6s infinite;
+}
+
+.fuego:nth-child(3) {
+    animation: fuego 1s 6s infinite;
+}
+
+.fuego:nth-child(4) {
+    animation: fuego 0.5s 6s infinite;
+}
+
+.fuego:nth-child(5) {
+    animation: fuego 0.2s 6s infinite;
+}
 
 @keyframes fuego {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         background: rgba(255, 230, 80, 0.8);
         box-shadow: 0 0 35px 10px rgba(255, 200, 50, 0.5), 0 0 15px 4px rgba(255, 77, 148, 0.4);
         transform: translateY(0) scale(1);
     }
+
     50% {
         opacity: 0.8;
         background: rgba(255, 77, 148, 0.4);
@@ -237,7 +257,8 @@ html, body {
 .cake-name {
     color: #ff2a68;
     font-family: 'Mali', cursive;
-    font-size: 33px; /* To hơn Happy Birthday đúng 5px */
+    font-size: 33px;
+    /* To hơn Happy Birthday đúng 5px */
     font-weight: 700;
     margin-top: 6px;
     letter-spacing: 0.5px;
@@ -306,9 +327,19 @@ html, body {
 }
 
 @keyframes babyBounce {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    30% { transform: translateY(-10px) rotate(-3deg); }
-    70% { transform: translateY(-4px) rotate(3deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-10px) rotate(-3deg);
+    }
+
+    70% {
+        transform: translateY(-4px) rotate(3deg);
+    }
 }
 
 /* Animation cho Doraemon Khóc xúc động */
@@ -317,8 +348,15 @@ html, body {
 }
 
 @keyframes cryingWobble {
-    0%, 100% { transform: scale(1) translateY(0); }
-    50% { transform: scale(1.05) translateY(-5px); }
+
+    0%,
+    100% {
+        transform: scale(1) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.05) translateY(-5px);
+    }
 }
 
 /* Animation cho Doraemon Hạnh phúc */
@@ -327,8 +365,15 @@ html, body {
 }
 
 @keyframes happyJoy {
-    0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
-    50% { transform: translateY(-12px) scale(1.06) rotate(2deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) scale(1.06) rotate(2deg);
+    }
 }
 
 /* Khung lời thoại typewriter */
@@ -370,8 +415,15 @@ html, body {
 }
 
 @keyframes blinkStoryCursor {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 /* ==================== CÁC NÚT ĐIỀU KHIỂN CUỐI CÙNG ==================== */
@@ -388,8 +440,15 @@ html, body {
 }
 
 @keyframes popUpControls {
-    0% { transform: scale(0.8); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .story-btn {
@@ -419,8 +478,15 @@ html, body {
 }
 
 @keyframes pulseFlowerNext {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.06); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
 }
 
 .story-btn.replay-btn {
@@ -504,10 +570,11 @@ html, body {
     }
 
     .cake-title {
-        font-size: 23px;
+        font-size: 35px;
     }
 
     .cake-name {
-        font-size: 28px; /* To hơn Happy Birthday đúng 5px */
+        font-size: 40px;
+        /* To hơn Happy Birthday đúng 5px */
     }
 }
