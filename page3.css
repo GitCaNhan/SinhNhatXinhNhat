@@ -58,11 +58,12 @@ body {
 }
 
 /* Khi bánh sinh nhật thu nhỏ nhường chỗ cho phần lời chúc */
-/* Giữ bánh to rõ ràng, nổi bật, tỷ lệ cân đối với khung lời chúc */
+/* Giữ bánh to rõ ràng, nổi bật, tỷ lệ cân đối, tách biệt với khung lời chúc */
 .cake-section.compact {
     transform: scale(1.35);
-    margin-top: -50px;
-    margin-bottom: -30px;
+    transform-origin: center 38%;
+    margin-top: -45px;
+    margin-bottom: 20px;
 }
 
 #cake {
@@ -249,7 +250,7 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 35px;
+    font-size: 25px;
     letter-spacing: 1px;
     text-shadow: 0 2px 4px rgba(255, 77, 148, 0.2);
 }
@@ -257,7 +258,7 @@ body {
 .cake-name {
     color: #ff2a68;
     font-family: 'Mali', cursive;
-    font-size: 40px;
+    font-size: 30px;
     /* To hơn Happy Birthday đúng 5px */
     font-weight: 700;
     margin-top: 6px;
@@ -523,15 +524,16 @@ body {
         margin-top: -30px;
     }
 
-    /* Trên mobile giữ bánh to rõ rệt (1.28 thay vì 0.84), nổi bật cả bánh và dòng chữ chúc */
+    /* Trên mobile giữ bánh to rõ rệt (1.28), nổi bật cả bánh và chữ, không bị tin nhắn che */
     .cake-section.compact {
         transform: scale(1.28);
-        margin-top: -55px;
-        margin-bottom: -32px;
+        transform-origin: center 38%;
+        margin-top: -48px;
+        margin-bottom: 20px;
     }
 
     .messages-section {
-        margin-top: 4px;
+        margin-top: 16px;
     }
 
     .story-card {
@@ -570,11 +572,11 @@ body {
     }
 
     .cake-title {
-        font-size: 35px;
+        font-size: 25px;
     }
 
     .cake-name {
-        font-size: 40px;
+        font-size: 30px;
         /* To hơn Happy Birthday đúng 5px */
     }
 }
