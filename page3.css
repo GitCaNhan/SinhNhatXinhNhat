@@ -41,7 +41,7 @@ body {
     z-index: 10;
 }
 
-/* Box trung tâm chứa bánh và lời chúc cân đối, tự động căn giữa */
+/* Box trung tâm chứa bánh và lời chúc cân đối, tự động căn giữa và nâng cao lên */
 .birthday-stage-box {
     width: 100%;
     display: flex;
@@ -49,6 +49,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    transform: translateY(-50px);
     transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -535,6 +536,7 @@ body {
     .birthday-stage-box {
         width: 100%;
         max-width: 100%;
+        transform: translateY(-65px);
     }
 
     .cake-section {
