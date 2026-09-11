@@ -249,7 +249,7 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     font-style: italic;
-    font-size: 28px;
+    font-size: 35px;
     letter-spacing: 1px;
     text-shadow: 0 2px 4px rgba(255, 77, 148, 0.2);
 }
@@ -257,7 +257,7 @@ body {
 .cake-name {
     color: #ff2a68;
     font-family: 'Mali', cursive;
-    font-size: 33px;
+    font-size: 40px;
     /* To hơn Happy Birthday đúng 5px */
     font-weight: 700;
     margin-top: 6px;
